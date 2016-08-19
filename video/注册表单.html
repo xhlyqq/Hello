@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册表单</title>
+    <link rel="stylesheet" href="form.css">
+    <script type="application/javascript" src="jquery.js"></script>
+</head>
+<body>
+<button onclick="show1('box')" id="btn">注册</button>
+<div id="box">
+
+        <div id="close" onclick="$('#box').hide();$('#back').remove()">
+            <span>X</span>
+        </div>
+
+    <div id="title">
+        <p>孤狼特别行动队</p>
+        <p>期待你的加入</p>
+    </div>
+
+
+    <form action="孤狼特别行动队.html" id="myform" name="form" onsubmit="return check(this)">
+        <div class="content">
+            <span class="form_font">姓名</span>
+             <input type="text" class="username" name="username">
+        </div>
+
+        <div class="content">
+            <span class="form_font">性别</span>
+             男<input type="radio" name="sex" value="男">
+            女<input type="radio" name="sex" value="女">
+            <span class="form_font">年龄</span>
+            <input type="text" class="userage" name="userage">
+        </div>
+        <div class="content">
+            <span class="form_font">学历</span>
+            <input type="text" list="degree" class="userdegree">
+            <datalist id="degree">
+                <option value="研究生">研究生</option>
+                <option value="一本">一本</option>
+                <option value="二本">二本</option>
+                <option value="三本">三本</option>
+                <option value="大专">大专</option>
+                <option value="大专以下">大专以下</option>
+            </datalist>
+         </div>
+        <div class="content">
+            <span class="form_font">特长</span>
+             篮球<input type="checkbox" name="forte" value="篮球">
+            游泳<input type="checkbox" name="forte" value="游泳">
+             足球<input type="checkbox" name="forte" value="足球">
+            射击<input type="checkbox" name="forte" value="射击">
+            无<input type="checkbox" name="forte" value="无">
+        </div>
+        <div class="content">
+             <span class="form_font">自我介绍</span>
+            <br>
+            <textarea rows="6" cols="25" class="jie"></textarea>
+        </div>
+       <button type="submit" id="submit" formtarget="_self">提交</button>
+    </form>
+
+</div>
+<script type="application/javascript">
+    function show1(qwe){
+        var login=document.getElementById(qwe);
+        login.style.zIndex=9999;
+        login.style.display='block';
+        login.style.position='absolute';
+        login.style.top=login.style.left='50%';
+        login.style.marginTop=-login.offsetHeight/2+'px';
+        login.style.marginLeft=-login.offsetWidth/2+'px';
+        var bg=document.createElement('div');
+        bg.id='back';
+        bg.style.zIndex=9998;
+        bg.style.position='absolute';
+        bg.style.width=bg.style.height='100%';
+        bg.style.backgroundColor='black';
+        bg.style.opacity=0.2;
+        document.body.appendChild(bg);
+    }
+    function check(s){
+
+        var re=/\s|\d|\w/i;
+        if(re.test(s.username.value)){
+            alert('姓名不符合要求,请输入真实姓名');
+            return false;
+        }else if(s.username.value==''||s.username.value.length>4){
+            alert('姓名不符合要求,请输入真实姓名');
+            return false;
+        }
+
+
+        if(s.userage.value<=15&&s.userage.value>0){
+            alert(' 年龄低于16岁,不符合入队要求');
+            return false;
+        }else if(s.userage.value>=30){
+            alert('年龄大于30岁,不符合我队要求');
+            return false
+        }else if(s.userage.value==''){
+            alert('请输入年龄');
+            return false;
+        }
+
+
+        for(var i=0;i< s.sex.length;i++) {
+            if (s.sex[i].checked) {
+
+                return true;
+            }
+                alert('请选择你的性别');
+                return false;
+
+        }
+        
+
+        for(var j=0;j< s.forte.length;j++){
+            if(s.forte[j].checked){
+                return true;
+            }else{
+                alert('请选择你的特长');
+                return false;
+            }
+        }
+
+
+
+    }
+
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

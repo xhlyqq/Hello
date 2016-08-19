@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>孤狼特别行动队</title>
+    <style type="text/css">
+        body{
+            background-image: url('u=3206383087,3613846684&fm=21&gp=0.jpg');
+            background-size: cover;
+        }
+        div {
+            width:100px;
+            height:20px;
+            border:1px solid forestgreen;
+            border-radius: 5px;
+            color:yellowgreen;
+            font-size:1px;
+            margin:400px auto;
+            text-align:center;
+            line-height: 20px;
+
+
+        }
+    </style>
+</head>
+<body>
+<div >恭喜你注册成功</div>
+<script type="application/javascript">
+//    window.onload=function(){
+        var div=document.getElementsByTagName('div')[0];
+//        div.style.display='block';
+//    }
+    var index=0;
+    function app(){
+        div.style.transform='scale('+index+')';
+        index++;
+        if(index==10){
+            clearInterval(time);
+        }
+    }
+   var time= setInterval(app,50);
+
+</script>
+</body>
+</html>
